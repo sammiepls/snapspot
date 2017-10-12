@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
 
     describe "validates password" do
       it { is_expected.to validate_presence_of(:password) }
-      it { is_expected.to validate_presence_of(:password_confirmation) }
       it { is_expected.to validate_length_of(:password).is_at_least(7).is_at_most(20) }
       it { is_expected.to validate_confirmation_of(:password) }
     end

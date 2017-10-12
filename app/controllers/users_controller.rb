@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_users, only: [:show, :update, :destroy]
+  before_action :set_users, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -26,9 +26,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash.now[:success] = "Your details have been updated successfully."
+      flash[:success] = "Your details have been updated successfully."
       redirect_to user_path(@user)
     else
+      flash.now[:error] = "There was an error updating your account."
       @errors = @user.errors.full_messages
       render template: "users/edit"
     end

@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   context "validations" do
 
     it "should have username and email and password_digest" do
-      should have_db_column(:username).of_type(:string)
+      should have_db_column(:username)
       should have_db_column(:email).of_type(:string)
       should have_db_column(:password_digest).of_type(:string)
     end

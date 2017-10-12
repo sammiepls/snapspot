@@ -10,8 +10,7 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness:true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :password, length: { minimum:7, maximum:20 }, allow_nil: true
-  validates :password_confirmation, presence:true, allow_nil:true
-
+  validates :password_confirmation, presence:true, confirmation:true
 
   def self.authenticate(params)
     user = User.find_by(username:params[:user][:username])

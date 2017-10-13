@@ -13,6 +13,9 @@ class User < ApplicationRecord
   validates :password, length: { minimum:7, maximum:20 }, allow_nil: true
   validates :password_confirmation, confirmation:true, allow_nil:true
 
+  # authentication
+  enum access_level: [ :user, :superadmin ]
+
   def capitalize
     self.first_name = self.first_name.capitalize
     self.last_name = self.last_name.capitalize

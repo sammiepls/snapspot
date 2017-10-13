@@ -65,3 +65,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Figaro
 gem "figaro"
+
+# Facebook Login
+gem 'omniauth-facebook'

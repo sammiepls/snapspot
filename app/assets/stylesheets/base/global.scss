@@ -1,0 +1,29 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: $dark;
+}
+h1,.h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+a {
+  color: #2E292A;
+  &:hover, &:focus {
+    text-decoration: none;
+    color: $purple;
+  }
+}
+.btn {
+  padding: 0.5rem 1.75rem;
+  border-radius: 0;
+}
+.btn-primary {
+  background: $purple;
+  font-weight: 600;
+  border: 0;
+  color: #fff;
+  &:hover, &:focus {
+    background: darken($purple, 10%);
+  }
+}

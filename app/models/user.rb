@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # associations
   has_many :authentications, dependent: :destroy
-  # has_many :snapspots, dependent: :destroy
+  has_many :snapspots, dependent: :destroy
   # has_many :likes, dependent: :destroy
   # has_many :comments, dependent: :destroy
 

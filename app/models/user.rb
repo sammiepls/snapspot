@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   # associations
+  has_many :authentications, dependent: :destroy
   has_many :snapspots, dependent: :destroy
   # has_many :likes, dependent: :destroy
   # has_many :comments, dependent: :destroy
@@ -11,6 +12,27 @@ class User < ApplicationRecord
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :password, length: { minimum:7, maximum:20 }, allow_nil: true
   validates :password_confirmation, confirmation:true, allow_nil:true
+
+  # FB
+  def self.create_with_auth_and_hash(authentication, auth_hash)
+    user = self.create!(
+    # If you dont know how to call it, use byebug and auto_hash to see how to call it
+      username: auth_hash["extra"]["raw_info"]["short_name"],
+      first_name: auth_hash["extra"]["raw_info"]["first_name"],
+      last_name: auth_hash["extra"]["raw_info"]["last_name"],
+      email: auth_hash["extra"]["raw_info"]["email"],
+      password: SecureRandom.hex(7)
+    )
+    # This connects the authentication to this user
+    user.authentications << authentication
+    return user
+  end
+
+  # grab fb_token to access Facebook for user data
+  def fb_token
+    x = self.authentications.find_by(provider: 'facebook')
+    return x.token unless x.nil?
+  end
 
   def self.authenticate(params)
     user = User.find_by(username:params[:user][:username])

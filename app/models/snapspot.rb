@@ -5,9 +5,9 @@ class Snapspot < ApplicationRecord
   # has_many :comments, dependent: :destroy
 
   # validation
-  validates :name,:location,:description presence: true
+  validates :name,:address,:description, presence: true
   # geocoded
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
-  
+
 end

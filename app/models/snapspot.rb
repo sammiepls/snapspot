@@ -6,7 +6,10 @@ class Snapspot < ApplicationRecord
 
   # validation
   validates :name,:description, presence: true
-  validate :address_lat_lng
+  validate :address_lat_lng, :must_have_three_tags
+
+  # tags
+  acts_as_taggable
 
   # geocoded
   geocoded_by :address
@@ -17,6 +20,12 @@ class Snapspot < ApplicationRecord
   def address_lat_lng
     if !address.present? && !latitude.present? && !longitude.present?
       errors.add(:messages, "Address, latitude and longitude can't be blank")
+    end
+  end
+
+  def must_have_three_tags
+    if self.tag_list.count != 3
+      errors.add(:messages, "Please supply 3 tags that best describe your SnapSpot")
     end
   end
 

@@ -37,14 +37,16 @@ function showMap() {
 
 }
 
+// Set GoogleMap
 function initMap() {
+
   map = new google.maps.Map(document.getElementById('map-new'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 18
   });
   infoWindow = new google.maps.InfoWindow;
 
-  // Try HTML5 geolocation.
+  // If location is on, set this to be initial position of map
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -64,13 +66,24 @@ function initMap() {
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-  } else {
+  }  else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
+  // On click on map, change lat/lng input based on map marker
   map.addListener('click', function(e) {
     placeMarkerAndPanTo(e.latLng, map);
+    latLng = e.latLng
+    geocoding  = new google.maps.Geocoder();
+    setAddress(geocoding);
+  });
+
+  // Change map position based on address input
+  $('#snapspot_address').on('input', function() {
+    snapspot_address = $("#snapspot_address").val()
+    geocoding  = new google.maps.Geocoder();
+    codeAddress(geocoding);
   });
 
 }
@@ -83,11 +96,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
   }
 
+  // Get lat and lng and center map based on placing map marker
   function placeMarkerAndPanTo(latLng, map) {
     if ( marker ) {
       infoWindow.setContent(`<div class='text-center'>Latitude: ${latLng.lat()} <br> Longitude: ${latLng.lng()}</div>`);
       marker.setPosition(latLng);
       infoWindow.open(map, marker);
+      $("#snapspot_latitude").val(latLng.lat())
+      $("#snapspot_longitude").val(latLng.lng())
 
     } else {
       marker = new google.maps.Marker({
@@ -97,4 +113,35 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
     }
     map.panTo(latLng);
+  }
+
+  // Get position in map based on address input
+  function codeAddress(geocoding){
+    if(snapspot_address.length > 0){
+      geocoding.geocode({'address': snapspot_address},function(results, status){
+        if(status == google.maps.GeocoderStatus.OK){
+          map.setCenter(results[0].geometry.location);
+          marker.setPosition(results[0].geometry.location);
+
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+
+  // Set address value based on map marker position
+  function setAddress(geocoding) {
+    geocoding.geocode({'latLng': latLng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          if(results[0].formatted_address.length>64){
+            $("#snapspot_address").val(results[0].formatted_address.substring(0,64)+'...')
+          }
+          else {
+            $("#snapspot_address").val(results[0].formatted_address.substring(0,64)+'...')
+          }
+        }
+      }
+    });
   }

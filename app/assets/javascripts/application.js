@@ -16,3 +16,24 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).on('turbolinks:load', function(){
+//
+// })
+
+// Show Google Map
+function initMap() {
+  var latitude = parseFloat($("#latitude").html());
+  var longitude = parseFloat($("#longitude").html());
+  var marker_location = {lat: latitude, lng: longitude};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    center: marker_location
+  });
+  var marker = new google.maps.Marker({
+    position: marker_location,
+    map: map
+  });
+
+  
+}

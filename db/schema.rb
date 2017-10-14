@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013064846) do
+ActiveRecord::Schema.define(version: 20171013034258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,16 +25,6 @@ ActiveRecord::Schema.define(version: 20171013064846) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
-  create_table "snapspots", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "description"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_snapspots_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "first_name"
@@ -47,5 +37,4 @@ ActiveRecord::Schema.define(version: 20171013064846) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "snapspots", "users"
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "welcome#index"
   resources :users
+  resources :snapspots
   # signup
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

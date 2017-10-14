@@ -68,3 +68,9 @@ gem "figaro"
 
 # Facebook Login
 gem 'omniauth-facebook'
+
+# Geocoder
+gem 'geocoder'
+
+# Google Maps for Rails
+gem 'gmaps4rails'

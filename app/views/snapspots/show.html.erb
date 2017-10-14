@@ -9,6 +9,13 @@
   </div>
 </main>
 
+<%= link_to snapspot_path(@snapspot), method: :delete do %>
+  <i class='fa fa-fw fa-trash'></i> Delete snapspot
+<% end %>
+
+<%= link_to edit_snapspot_path(@snapspot) do %>
+  <i class='fa fa-fw fa-pencil'></i> Edit snapspot
+<% end %>
 
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_JS_KEY'] %>&callback=showMap">

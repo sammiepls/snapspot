@@ -4,8 +4,9 @@
       <div class="col-12">
         <h1>Edit your snapspot</h1>
         <%= form_for @snapspot do |form| %>
-
         <%= render partial: '/snapspots/form', object: form %>
+        <%= form.submit class: 'btn btn-primary' %>
+
         <% end %>
       </div>
     </div>

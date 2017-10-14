@@ -15,3 +15,10 @@
 <div class="text-field">
   <%= form.text_field :longitude, type: 'text', placeholder: "Longitude" %>
 </div>
+
+<div id="map-new" style='width: 800px; height: 400px;'></div>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_GEOCODE_KEY'] %>&callback=initMap">
+    </script>

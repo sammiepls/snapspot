@@ -2,3 +2,5 @@
   <%= link_to "#{snapspot.name}", snapspot_path(snapspot) %>
  <%= raw snapspot.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 <% end %>
+
+<%= will_paginate @snapspots %>

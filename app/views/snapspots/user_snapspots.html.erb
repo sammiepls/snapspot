@@ -1,5 +1,4 @@
 <h1><%= @user.username %> SnapSpots </h1>
 <% @snapspots.each do |snapspot| %>
   <%= link_to "#{snapspot.name}", snapspot_path(snapspot) %>
-
 <% end %>

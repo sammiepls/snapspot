@@ -51,7 +51,7 @@ class SnapspotsController < ApplicationController
   private
 
   def snapspot_params
-    params.require(:snapspot).permit(:user_id, :name, :description, :address, :latitude, :longitude, :created_at,:updated_at)
+    params.require(:snapspot).permit(:user_id, :name, :description, :address, :latitude, :longitude, :created_at,:updated_at,:tag_list)
   end
 
   def set_snapspot

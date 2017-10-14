@@ -24,8 +24,8 @@ class Snapspot < ApplicationRecord
   end
 
   def must_have_three_tags
-    if !self.tag_list.count == 3
-      errors.add(:tags, "Please supply 3 tags that best describe your SnapSpot")
+    if self.tag_list.count != 3
+      errors.add(:messages, "Please supply 3 tags that best describe your SnapSpot")
     end
   end
 

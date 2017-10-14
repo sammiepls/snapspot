@@ -10,7 +10,6 @@ class SnapspotsController < ApplicationController
   end
 
   def create
-    byebug
     @snapspot = Snapspot.new(snapspot_params)
     if @snapspot.save
       flash.now[:success] = "Account successfully created!"

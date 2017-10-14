@@ -71,3 +71,6 @@ gem 'omniauth-facebook'
 
 # Geocoder
 gem 'geocoder'
+
+# Act as Taggable
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on'

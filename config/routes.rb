@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users
   resources :snapspots
   get "/users/:id/snapspots" => "snapspots#user_snapspots", as: "user_snapspots"
-
+  # tags
+  get 'tags/:tag', to: 'snapspots#index', as: :tag
   # signup
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

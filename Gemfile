@@ -68,3 +68,6 @@ gem "figaro"
 
 # Facebook Login
 gem 'omniauth-facebook'
+
+# Geocoder
+gem 'geocoder'

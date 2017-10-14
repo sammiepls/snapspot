@@ -1,0 +1,15 @@
+<main>
+  <%= @snapspot.name %>
+  <%= @snapspot.description %>
+  <%= @snapspot.address %>
+  <span id="latitude"><%= @snapspot.latitude %></span>
+  <span id="longitude"><%= @snapspot.longitude %></span>
+  <div style='width: 800px;'>
+    <div id="show-map" style='width: 800px; height: 400px;'></div>
+  </div>
+</main>
+
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_JS_KEY'] %>&callback=showMap">
+</script>

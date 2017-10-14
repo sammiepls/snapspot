@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_users, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -26,10 +26,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Your details have been updated successfully."
+      flash.now[:success] = "Your details have been updated successfully."
       redirect_to user_path(@user)
     else
-      flash.now[:error] = "There was an error updating your account."
       @errors = @user.errors.full_messages
       render template: "users/edit"
     end
@@ -40,7 +39,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username,:email,:first_name,:last_name,:password,:password_confirmation,:avatar,:created_at,:updated_at)
   end
 
-  def set_users
+  def set_user
     @user = User.find(params[:id])
   end
 end

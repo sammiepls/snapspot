@@ -28,6 +28,19 @@ class SnapspotsController < ApplicationController
   end
 
   def update
+    if @snapspot.update_attributes(snapspot_params)
+      flash[:success] = "Your SnapSpot has been updated successfully."
+      redirect_to snapspot_path(@snapspot)
+    else
+      @errors = @snapspot.errors.full_messages
+      render template: "snapspots/edit"
+    end
+  end
+
+  def destroy
+    @snapspot.destroy
+    flash[:success] = 'SnapSpot was successfully deleted'
+    redirect_to snapspots_path
   end
 
   def user_snapspots

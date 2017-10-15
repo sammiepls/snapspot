@@ -2,6 +2,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   color: $dark;
+  outline: none;
 }
 h1,.h1 {
   font-family: 'Poppins', sans-serif;
@@ -28,6 +29,13 @@ a {
   &:disabled {
     background: desaturate($purple, 20%);
   }
+}
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  vertical-align: middle;
 }
 form {
   margin: 1.5rem 0;

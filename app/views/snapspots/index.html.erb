@@ -1,17 +1,29 @@
-Search
-<%= form_tag snapspots_path, :method => 'get',remote: true, :id => "snapspot_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  <div id="snapspot-wrapper">
-    <%= render 'snapspots' %>
-  </div>
-<% end %>
+<section class="search-wrapper d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 ml-auto mr-auto">
+        <%= image_tag("snapspot_icon.png", class: "snapspot-icon")%>
+        <%= form_tag snapspots_path, :method => 'get',remote: true, :id => "snapspot_search" do %>
+          <%= text_field_tag :search, params[:search], placeholder:"Search for a SnapSpot! Eg. urban, beach, nature..." %>
+          <%= button_tag(name:nil,type: "submit", class: "btn-icon mr-2") do %>
+            <i class="fa fa-search fa-2x"></i>
+          <% end %>
+        <% end %>
+        <h5>Popular Searches</h5>
+        <% @tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
 
-<h1>List of tags</h1>
-<% @tags.each do |tag| %>
-<%= tag.name %>
-<% end %>
+    </div>
+  </div>
+</section>
+
+<div id="snapspot-wrapper">
+    <%= render 'snapspots' %>
+</div>
+
+
+
 
 <%= will_paginate @snapspots %>

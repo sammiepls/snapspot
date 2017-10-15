@@ -1,3 +1,27 @@
-// Place all the styles related to the Snapspots controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-wrapper {
+  background: url("index.jpg");
+  background-size: cover;
+  background-position: bottom;
+  min-height: 40vh;
+  color: #fff;
+  text-align: center;
+  #snapspot_search {
+    background: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    box-shadow: $shadow;
+    display: flex;
+    input {
+      background: none;
+      flex: 1;
+      padding-right: .5rem;
+      padding-left: .5rem;
+      outline: none;
+      color: #fff;
+      font-weight: 600;
+
+    }
+    ::-webkit-input-placeholder {
+      color: #fff;
+    }
+  }
+}

@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
+// Ajax Search
 $(document).on('turbolinks:load', function(){
   $("#snapspot_search input").keyup(function() {
     $.get($("#snapspot_search").attr("action"), $("#snapspot_search").serialize(), null, "script");

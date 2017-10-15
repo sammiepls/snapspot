@@ -9,5 +9,9 @@ Search
   </div>
 <% end %>
 
+<h1>List of tags</h1>
+<% @tags.each do |tag| %>
+<%= tag.name %>
+<% end %>
 
 <%= will_paginate @snapspots %>

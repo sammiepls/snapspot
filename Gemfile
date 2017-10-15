@@ -77,3 +77,8 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 
 # Will Paginate
 gem 'will_paginate'
+
+# For AWS image upload
+gem "carrierwave"
+gem "mini_magick"
+gem 'fog-aws'

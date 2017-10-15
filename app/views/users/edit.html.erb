@@ -2,6 +2,7 @@
   <h1>Update User</h1>
   <%= form_for @user do |form| %>
   <%= render partial: '/users/form', object: form %>
+  <%= form.file_field :avatar %>
 
   <div class="submit-field text-center my-3">
     <%= form.submit class: 'btn btn-primary' %>

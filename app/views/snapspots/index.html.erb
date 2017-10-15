@@ -1,6 +1,17 @@
-<% @snapspots.each do |snapspot| %>
-  <%= link_to "#{snapspot.name}", snapspot_path(snapspot) %>
- <%= raw snapspot.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+Search
+<%= form_tag snapspots_path, :method => 'get',remote: true, :id => "snapspot_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="snapspot-wrapper">
+    <%= render 'snapspots' %>
+  </div>
+<% end %>
+
+<h1>List of tags</h1>
+<% @tags.each do |tag| %>
+<%= tag.name %>
 <% end %>
 
 <%= will_paginate @snapspots %>

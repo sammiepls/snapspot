@@ -2,8 +2,11 @@ class SnapspotsController < ApplicationController
   before_action :set_snapspot, only: [:show, :edit, :update, :destroy]
 
   def index
+    @tags = Snapspot.tag_counts.order(:taggings_count).first(10)
     if params[:tag]
       @snapspots = Snapspot.tagged_with(params[:tag])
+    elsif params[:search]
+      @snapspots = Snapspot.search(params[:search])
     else
       @snapspots = Snapspot.all
     end

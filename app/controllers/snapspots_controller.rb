@@ -4,6 +4,8 @@ class SnapspotsController < ApplicationController
   def index
     if params[:tag]
       @snapspots = Snapspot.tagged_with(params[:tag])
+    elsif params[:search]
+      @snapspots = Snapspot.search(params[:search])
     else
       @snapspots = Snapspot.all
     end

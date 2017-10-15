@@ -29,4 +29,14 @@ class Snapspot < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search && !self.tagged_with(search).nil?
+      self.tagged_with(search)
+    elsif search
+      where('name ILIKE ?', "%#{search}%")
+    else
+      order('id DESC')
+    end
+  end
+
 end

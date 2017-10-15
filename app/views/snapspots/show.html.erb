@@ -3,6 +3,9 @@
   <%= @snapspot.description %>
   <%= @snapspot.address %>
   <%= @snapspot.tag_list %>
+  <% if !@snapspot.images.empty? %>
+  <%= image_tag(@snapspot.images.first.url, class: "") %>
+  <% end %>
 
   <span id="latitude"><%= @snapspot.latitude %></span>
   <span id="longitude"><%= @snapspot.longitude %></span>

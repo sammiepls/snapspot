@@ -1,5 +1,15 @@
 $purple: #8477b2;
 $dark:#2E292A;
+$error: #c76a64;
+$success: #6dad76;
+
+%btn {
+  padding: 0.5rem 1.75rem;
+  border-radius: 0;
+  cursor: pointer;
+  border: 0;
+  font-weight: 600;
+}
 
 %flash {
   text-align: center;

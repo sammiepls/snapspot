@@ -1,9 +1,21 @@
-<h1>Login</h1>
+<main class='hero'>
+  <div class="container">
+    <div class="row">
+      <div class="col-5 ml-auto mr-auto">
+        <div class="hero-login">
+          <h1 class='purple'>Login</h1>
+          <%= form_for(:session, url: login_path) do |f| %>
 
-<%= form_tag '/login' do %>
+            <%= f.text_field :username, placeholder:"Username" %>
+            <%= f.password_field :password, placeholder:"Password" %>
 
-  Username: <%= text_field_tag :username %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+            <%= f.submit "Login", class: "btn-primary" %>
+          <% end %>
 
-<% end %>
+          <%= link_to "Login with Facebook", "/auth/facebook" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

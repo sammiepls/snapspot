@@ -1,22 +1,32 @@
-<main>
-  <%= form_for @user do |form| %>
-  <%= render partial: '/users/form', object: form %>
+<main class='hero'>
+  <div class="container">
+    <div class="row">
+      <div class="col-5 ml-auto mr-auto">
+        <div class="hero-login">
+          <h1 class='purple'>Sign Up</h1>
+          <%= form_for @user do |form| %>
 
-  <div class="submit-field text-center my-3">
-    <div class="password-field">
-      <%= form.password_field :password, placeholder:"Password" %>
+          <%= render partial: '/users/form', object: form %>
+
+            <%= form.password_field :password, placeholder:"Password" %>
+            <%= form.password_field :password_confirmation, placeholder:"Confirm Password" %>
+            <%= form.submit class: 'btn-primary' %>
+
+          <% end %>
+
+          <%= link_to "Sign up with Facebook", "/auth/facebook" %>
+
+        </div>
+      </div>
     </div>
-    <div class="password-field">
-      <%= form.password_field :password_confirmation, placeholder:"Confirm Password" %>
-    </div>
-    <%= form.submit class: 'btn btn-primary' %>
   </div>
+</main>
+<main>
+
 
   <div class="other-links">
     <%#= link_to t(".sign_in"), sign_in_path %>
   </div>
-  <% end %>
 
-  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
 
 </main>

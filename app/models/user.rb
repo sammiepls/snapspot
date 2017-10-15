@@ -17,7 +17,7 @@ class User < ApplicationRecord
   enum access_level: [ :user, :superadmin ]
 
   #image uploader
-  mount_uploaders :images, ImageUploader
+  mount_uploader :avatar, ImageUploader
 
   def capitalize
     self.first_name = self.first_name.capitalize

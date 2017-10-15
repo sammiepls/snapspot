@@ -17,6 +17,9 @@ class Snapspot < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode  # auto-fetch address
 
+  #image uploader
+  mount_uploaders :images, ImageUploader
+
   def address_lat_lng
     if !address.present? && !latitude.present? && !longitude.present?
       errors.add(:messages, "Address, latitude and longitude can't be blank")

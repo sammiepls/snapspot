@@ -1,4 +1,5 @@
 class SnapspotsController < ApplicationController
+  before_action :require_login
   before_action :set_snapspot, only: [:show, :edit, :update, :destroy]
 
   def index

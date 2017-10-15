@@ -9,6 +9,7 @@ h1,.h1 {
 }
 a {
   color: #2E292A;
+  cursor: pointer;
   &:hover, &:focus {
     text-decoration: none;
     color: $purple;
@@ -23,7 +24,15 @@ a {
   font-weight: 600;
   border: 0;
   color: #fff;
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: darken($purple, 10%);
   }
+}
+#flash_error {
+  @extend %flash;
+  background: #8a1e17;
+}
+#flash_success{
+  @extend %flash;
+  background: #6dad76;
 }

@@ -4,6 +4,7 @@ body {
   color: $dark;
   outline: none;
   position: relative;
+  min-height: 100vh;
 }
 h1,.h1 {
   font-family: 'Poppins', sans-serif;

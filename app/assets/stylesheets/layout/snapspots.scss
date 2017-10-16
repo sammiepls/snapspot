@@ -4,6 +4,9 @@
   background-size: cover;
   min-height: 20vh;
 }
+#map-new,#show-map {
+  color: $dark;
+}
 .form-bg {
   position: relative;
   overflow: hidden;
@@ -25,7 +28,7 @@
 }
 .form-bg::after {
   z-index: -1;
-   filter: blur(15px);
+   filter: blur(5px);
   content:'';
   position: absolute;
   top: 0;
@@ -34,7 +37,7 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(232, 255, 255, 0.5), rgba(250, 208, 246, 0.5)), url(form-bg.jpg);
+  background: linear-gradient(to right, rgba(108, 134, 134, 0.5), rgba(250, 208, 246, 0.5)), url(form-bg.jpg);
   background-size: cover;
   background-position: bottom;
 }

@@ -33,10 +33,10 @@ class Snapspot < ApplicationRecord
   end
 
   def self.search(search)
-    if search && !self.tagged_with([search], wild:true).nil?
-      self.tagged_with(search)
+    if search && !self.tagged_with([search]).empty?
+      self.tagged_with([search], :wild => true)
     elsif search
-      where('name ILIKE ?', "%#{search}%")
+      where('name ILIKE ? OR description ILIKE ?', "%#{search}%","%#{search}%")
     else
       order('id DESC')
     end

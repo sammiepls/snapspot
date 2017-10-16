@@ -9,8 +9,19 @@
 }
 .user-avatar {
   box-shadow: $l-shadow;
+  width: 300px;
 }
 .user-edit-form input:not([type=submit]){
     background: $offwhite;
     margin-left: .75rem;
+}
+.snapspot-taken {
+  margin-top: .5rem;
+  img {
+    width: 20px;
+    vertical-align: middle;
+    }
+  h4 {
+    vertical-align: middle;
+  }
 }

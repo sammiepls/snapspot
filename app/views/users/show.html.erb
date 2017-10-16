@@ -13,15 +13,20 @@
         <h1><%= @user.username %></h1>
         <% if current_user.superadmin? %>
           <%= link_to user_path(@user), method: :delete do %>
-            <i class='fa fa-fw fa-trash'></i> Delete User
+            <p><i class='fa fa-fw fa-trash'></i> Delete User
           <% end %>
         <% end %>
 
         <% if @user == current_user %>
           <%= link_to edit_user_path(@user) do %>
-            <i class='fa fa-fw fa-pencil'></i> Edit User
+            <i class='fa fa-fw fa-pencil'></i> Edit User</p>
           <% end %>
         <% end %>
+
+        <p class='mb-0'>Total</p>
+        <h4 class='d-inline'><%= @user.snapspots.count %></h4>
+        <%= image_tag("snapspot_icon.png", class:"d-inline") %>
+
       </div>
     </div>
   </div>

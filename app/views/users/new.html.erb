@@ -17,16 +17,18 @@
           <%= link_to "Sign up with Facebook", "/auth/facebook" %>
 
         </div>
+        <% if @errors %>
+          <div class='error-wrapper'>
+            <% if @errors.count > 1 %>
+              <% @errors.each do |error| %>
+                <p><%= error %></p>
+              <% end %>
+            <% else %>
+              <%= @errors %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-</main>
-<main>
-
-
-  <div class="other-links">
-    <%#= link_to t(".sign_in"), sign_in_path %>
-  </div>
-
-
 </main>

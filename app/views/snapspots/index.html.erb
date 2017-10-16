@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6 ml-auto mr-auto">
+
         <%= image_tag("snapspot_icon.png", class: "snapspot-icon")%>
         <%= form_tag snapspots_path, :method => 'get',remote: true, :id => "snapspot_search" do %>
           <%= text_field_tag :search, params[:search], placeholder:"Search for a SnapSpot! Eg. urban, beach, nature..." %>
@@ -9,21 +10,26 @@
             <i class="fa fa-search fa-2x"></i>
           <% end %>
         <% end %>
-        <h5>Popular Searches</h5>
-        <% @tags.each do |tag| %>
-          <%= tag.name %>
-        <% end %>
-      </div>
 
+        <div class='popular-tags pt-3'>
+          <h5>Popular Tags</h5>
+          <% @tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag.name) %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<div id="snapspot-wrapper">
-    <%= render 'snapspots' %>
-</div>
-
-
+<main class="container mt-4">
+  <div class="row">
+    <div id="snapspot-wrapper">
+      <%= render 'snapspots' %>
+    </div>
+  </div>
+</main>
 
 
 <%= will_paginate @snapspots %>

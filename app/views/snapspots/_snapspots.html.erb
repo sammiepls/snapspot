@@ -1,4 +1,24 @@
-<% @snapspots.each do |snapspot| %>
-  <%= link_to "#{snapspot.name}", snapspot_path(snapspot) %>
- <%= raw snapspot.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-<% end %>
+<div class="card-deck">
+
+  <% @snapspots.each do |snapspot| %>
+    <%= link_to snapspot_path(snapspot) do %>
+    <div class='col-4 my-4'>
+      <div class="card text-center">
+        <% if snapspot.images.first %>
+          <%= image_tag snapspot.images.first.thumb, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/sammiepls-airbnb-clone/placeholder.png', class: "card-img-top"  %>
+        <% end %>
+        <div class="card-body">
+          <h4 class="card-title"><%= snapspot.name %></h4>
+          <p class="card-text"> <%= raw snapspot.tag_list.map { |tag| link_to "##{tag}", tag_path(tag) }.join(" ")  %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Submitted by <%= link_to snapspot.user.username, user_path(snapspot.user) %></small>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+</div>

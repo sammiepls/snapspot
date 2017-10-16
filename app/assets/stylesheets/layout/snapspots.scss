@@ -18,10 +18,41 @@
       outline: none;
       color: #fff;
       font-weight: 600;
-
     }
     ::-webkit-input-placeholder {
       color: #fff;
     }
   }
+  .popular-tags {
+    h5 {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    a {
+      color: #fff;
+      margin-right: .75rem;
+      &:hover, &:focus {
+        color: lighten($purple, 25%);
+      }
+    }
+  }
+}
+.card {
+  background: $offwhite;
+  border-radius: 0;
+  border: 0;
+  box-shadow: $l-shadow;
+}
+.card-text {
+  font-size: 1.2rem;
+}
+.card-img-top {
+  padding: .75rem .75rem 0;
+}
+.card-body {
+  font-family: 'Permanent Marker',cursive;
+}
+.card-footer {
+    border-top: 0;
+    background: transparent;
 }

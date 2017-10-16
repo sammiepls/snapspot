@@ -21,10 +21,10 @@ class SnapspotsController < ApplicationController
   def create
     @snapspot = Snapspot.new(snapspot_params)
     if @snapspot.save
-      flash.now[:success] = "Account successfully created!"
+      flash.now[:success] = "SnapSpot successfully created!"
       render template: "snapspots/show"
     else
-      flash.now[:error] = "There was an error creating your account."
+      flash.now[:error] = "There was an error creating your SnapSpot."
       @errors = @snapspot.errors.full_messages
       render template: "snapspots/new"
     end

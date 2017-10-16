@@ -104,8 +104,11 @@
   border-top: 0;
   background: transparent;
 }
+#snapspot-wrapper {
+  width: 100%;
+}
 .snapspot-image {
-  height: 60vh;
+  height: 80vh;
   object-fit: cover;
   width: 100%;
 }

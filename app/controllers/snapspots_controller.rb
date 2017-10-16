@@ -41,7 +41,7 @@ class SnapspotsController < ApplicationController
       flash[:success] = "Your SnapSpot has been updated successfully."
       redirect_to snapspot_path(@snapspot)
     else
-      @errors = @snapspot.errors.full_messages
+      @errors = @snapspot.errors[:messages].join
       render template: "snapspots/edit"
     end
   end

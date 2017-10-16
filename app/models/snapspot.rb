@@ -33,7 +33,7 @@ class Snapspot < ApplicationRecord
   end
 
   def self.search(search)
-    if search && !self.tagged_with(search).nil?
+    if search && !self.tagged_with([search], wild:true).nil?
       self.tagged_with(search)
     elsif search
       where('name ILIKE ?', "%#{search}%")

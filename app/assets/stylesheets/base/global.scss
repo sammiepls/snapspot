@@ -8,7 +8,7 @@ h1,.h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
-.purple {
+.purple,i {
   color: $purple;
 }
 .white {
@@ -61,4 +61,15 @@ input,textarea {
 #flash_success{
   @extend %flash;
   background: $success;
+}
+footer {
+  text-align: center;
+  padding: .75rem;
+  background: $dark;
+  color: #fff;
+}
+.error-wrapper {
+  padding: 1rem;
+  background: $error;
+  color: #fff;
 }

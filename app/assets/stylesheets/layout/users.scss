@@ -1,3 +1,16 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-hero {
+  background: url(user-hero.jpg);
+  background-size: cover;
+  background-position: 50% 60%;
+  min-height: 20vh;
+}
+.user-avatar-wrapper {
+  margin-top: -7rem;
+}
+.user-avatar {
+  box-shadow: $l-shadow;
+}
+.user-edit-form input:not([type=submit]){
+    background: $offwhite;
+    margin-left: .75rem;
+}

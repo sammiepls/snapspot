@@ -20,14 +20,13 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to 'View all SnapSpots', snapspots_path, class: "dropdown-item" %>
             <%= link_to 'Create new SnapSpot', new_snapspot_path, class: "dropdown-item" %>
-            <%= link_to 'View your SnapSpots', user_snapspots_path(current_user), class: "dropdown-item" %>
           </div>
         </li>
 
 
         <li class="navbar-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User Profile
+            <%= current_user.username %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to 'View user profile', user_path(current_user), class: "dropdown-item" %>

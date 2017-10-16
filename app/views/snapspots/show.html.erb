@@ -28,7 +28,7 @@
       <% @snapspot.images.shift %>
       <% @snapspot.images.each do |photo| %>
         <div class="carousel-item">
-          <%= image_tag photo.url, class: "d-block img-fluid"  %>
+          <%= image_tag photo.url, class: "snapspot-image d-block img-fluid"  %>
         </div>
       <% end %>
   </div>

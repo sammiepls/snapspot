@@ -1,15 +1,28 @@
-<main>
-  <h1>Update User</h1>
-  <%= form_for @user do |form| %>
-  <%= render partial: '/users/form', object: form %>
-  <%= form.file_field :avatar %>
+<section class="user-hero d-flex align-items-center justify-content-center">
+  <h1 class='marker white'>Edit your Profile</h1>
+</section>
+<main class='container'>
+  <div class='row'>
+    <div class='col-4'>
+      <div class='user-avatar-wrapper'>
+        <%= image_tag(@user.avatar.thumb.url, class: "user-avatar rounded-circle")  %>
+        <%= form_for @user do |form| %>
+          <%= form.file_field :avatar %>
+          <%= form.submit class: 'btn-primary', value:"Update Profile Picture" %>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-8'>
+      <div class='user-edit-form'>
+        <%= form_for @user do |form| %>
+        <%= render partial: '/users/form', object: form %>
 
-  <div class="submit-field text-center my-3">
-    <%= form.submit class: 'btn-primary' %>
-  </div>
-
-  <div class="other-links">
-    <%#= link_to t(".sign_in"), sign_in_path %>
+        <div class="my-3">
+          <%= form.submit class: 'btn-primary', value:"Update User Details" %>
+        </div>
+      </div>
   </div>
   <% end %>
+
+</div>
 </main>

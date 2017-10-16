@@ -73,3 +73,16 @@ footer {
   background: $error;
   color: #fff;
 }
+.pagination {
+  justify-content: center;
+  padding: 1rem;
+  font-family: 'Permanent Marker';
+  font-size: 1.5rem;
+  span, em, a {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  em {
+    color: $purple;
+  }
+}

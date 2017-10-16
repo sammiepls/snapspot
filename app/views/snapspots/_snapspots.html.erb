@@ -5,7 +5,7 @@
     <div class='col-4 my-4'>
       <div class="card text-center">
         <% if snapspot.images.first %>
-          <%= image_tag snapspot.images.first.thumb, class: "card-img-top" %>
+          <%= image_tag snapspot.images.first.polaroid, class: "card-img-top" %>
         <% else %>
           <%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/sammiepls-airbnb-clone/placeholder.png', class: "card-img-top"  %>
         <% end %>

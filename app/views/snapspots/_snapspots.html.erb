@@ -1,5 +1,11 @@
 <div class="card-deck">
 
+  <% if @snapspots.empty? %>
+    <div class='py-5 text-center col-12'>
+      <i class='fa fa-frown-o fa-5x mb-3'></i>
+      <p>Sorry, there doesn't seem to be anything matching your search </p>
+    </div>
+  <% else %>
   <% @snapspots.each do |snapspot| %>
     <%= link_to snapspot_path(snapspot) do %>
     <div class='col-4 my-4'>
@@ -20,5 +26,6 @@
     </div>
     <% end %>
   <% end %>
+  <% end%>
 
 </div>

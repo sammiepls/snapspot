@@ -53,6 +53,17 @@
   font-family: 'Permanent Marker',cursive;
 }
 .card-footer {
-    border-top: 0;
-    background: transparent;
+  border-top: 0;
+  background: transparent;
+}
+.snapspot-image {
+  height: 60vh;
+  object-fit: cover;
+  width: 100%;
+}
+.snapspot-details {
+  padding: 0 1.5rem 1.5rem;
+  h5 {
+    color: $purple;
+  }
 }

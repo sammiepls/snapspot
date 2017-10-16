@@ -11,6 +11,9 @@ h1,.h1 {
 .purple {
   color: $purple;
 }
+.white {
+  color: #fff;
+}
 .marker {
   font-family: 'Permanent Marker',sans-serif;
 }
@@ -46,7 +49,7 @@ a {
 form {
   margin: 1.5rem 0;
 }
-input {
+input,textarea {
   padding: .5rem;
   border: 0;
   margin: .5rem 0;

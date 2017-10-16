@@ -1,30 +1,32 @@
 <%= form.hidden_field :user_id, value: current_user.id %>
 
-<div class="text-field">
-  <%= form.text_field :name, type: 'text', placeholder: "Name" %>
+<div class='row'>
+<div class="col-12 my-2">
+  <h5><%= form.label :name %></h5>
+  <%= form.text_field :name, type: 'text', placeholder: "Name of your SnapSpot!" %>
 </div>
-<div class="text-field">
-  <%= form.text_area :description, type: 'text_area', placeholder: "Description" %>
+<div class="col-12 my-2">
+  <h5><%= form.label :description %></h5>
+  <%= form.text_area :description, type: 'text_area', placeholder: "Describe your SnapSpot, include how to get there or when is the best time to shoot there" %>
 </div>
-<div class="text-field">
-  <%= form.text_field :address, type: 'text', placeholder: "Address" %>
+<div class="col-12 my-2">
+  <h5><%= form.label :address %></h5>
+  <%= form.text_field :address, type: 'text', placeholder: "Address (optional if you filled in latitude and longitude)" %>
 </div>
-<div class="text-field">
-  <%= form.text_field :latitude, type: 'text', placeholder: "Latitude" %>
+<div class="col-6 my-2">
+  <h5><%= form.label :latitude %></h5>
+  <%= form.text_field :latitude, type: 'text', placeholder: "Latitude (optional if you filled in address)" %>
 </div>
-<div class="text-field">
-  <%= form.text_field :longitude, type: 'text', placeholder: "Longitude" %>
+<div class="col-6 my-2">
+  <h5><%= form.label :longitude %></h5>
+  <%= form.text_field :longitude, type: 'text', placeholder: "Longitude (optional if you filled in address)" %>
 </div>
-<div class="text-field">
-  <%= form.text_field :tag_list, type: 'text', placeholder: "List three tags separated by a comma" %>
+<div class="col-12 my-2">
+  <h5><%= form.label :tag_list %></h5>
+  <%= form.text_field :tag_list, type: 'text', placeholder: "List three tags separated by a comma that best describe your SnapSpot. Eg. beach, nature, sand" %>
 </div>
-
-<%= form.file_field :images, multiple: true %>
-
-
-<div id="map-new" style='width: 800px; height: 400px;'></div>
-
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_GEOCODE_KEY'] %>&callback=initMap">
-    </script>
+<div class='col-12 my-2'>
+  <h5>Upload some shots of your awesome SnapSpot!</h5>
+  <%= form.file_field :images, multiple: true %>
+</div>
+</div>

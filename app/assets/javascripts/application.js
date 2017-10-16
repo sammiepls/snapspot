@@ -52,8 +52,21 @@ function initMap() {
   });
   infoWindow = new google.maps.InfoWindow;
 
+  // When the address is already filled
+  if ( $("#snapspot_address").val().length>0  ) {
+    var latitude = parseFloat($("#snapspot_latitude").val());
+    var longitude = parseFloat($("#snapspot_longitude").val());
+    var pos = {lat: latitude, lng: longitude};
+    debugger
+    marker = new google.maps.Marker({
+      position: pos,
+      map: map
+    });
+    marker.setPosition(pos);
+    map.setCenter(pos);
+  }
   // If location is on, set this to be initial position of map
-  if (navigator.geolocation) {
+  else if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,

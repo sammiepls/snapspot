@@ -3,7 +3,7 @@ class SnapspotsController < ApplicationController
   before_action :set_snapspot, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tags = Snapspot.tag_counts.order(:taggings_count).first(10)
+    @tags = Snapspot.tag_counts.order('taggings_count DESC').first(10)
     if params[:tag]
       @snapspots = Snapspot.tagged_with(params[:tag])
     elsif params[:search]
@@ -11,7 +11,7 @@ class SnapspotsController < ApplicationController
     else
       @snapspots = Snapspot.all
     end
-    @snapspots = @snapspots.paginate(:page => params[:page], :per_page => 12)
+    @snapspots = @snapspots.paginate(:page => params[:page], :per_page => 6)
   end
 
   def new
@@ -21,10 +21,10 @@ class SnapspotsController < ApplicationController
   def create
     @snapspot = Snapspot.new(snapspot_params)
     if @snapspot.save
-      flash.now[:success] = "Account successfully created!"
+      flash.now[:success] = "SnapSpot successfully created!"
       render template: "snapspots/show"
     else
-      flash.now[:error] = "There was an error creating your account."
+      flash.now[:error] = "There was an error creating your SnapSpot."
       @errors = @snapspot.errors.full_messages
       render template: "snapspots/new"
     end

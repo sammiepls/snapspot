@@ -93,10 +93,14 @@
   border: 0;
   box-shadow: $l-shadow;
   transition: .3s;
+  height: 100%;
   &:hover {
     margin-top: -10px;
     background: darken($offwhite, 10%);
   }
+}
+.card-deck {
+  width: 100%;
 }
 .card-text {
   font-size: 1.2rem;

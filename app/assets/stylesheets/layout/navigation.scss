@@ -3,6 +3,7 @@
 }
 nav.navbar {
   background: rgba(255, 255, 255, .9);
+  box-shadow: $l-shadow;
 }
 .navbar-item:not(:last-child) {
   margin-right: 1rem;

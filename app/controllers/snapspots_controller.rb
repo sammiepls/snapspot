@@ -52,11 +52,6 @@ class SnapspotsController < ApplicationController
     redirect_to snapspots_path
   end
 
-  def user_snapspots
-    @user = User.find(params[:id])
-    @snapspots = Snapspot.where(user_id:params[:id])
-  end
-
   private
 
   def snapspot_params

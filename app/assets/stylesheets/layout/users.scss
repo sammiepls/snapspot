@@ -10,3 +10,7 @@
 .user-avatar {
   box-shadow: $l-shadow;
 }
+.user-edit-form input:not([type=submit]){
+    background: $offwhite;
+    margin-left: .75rem;
+}

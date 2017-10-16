@@ -1,26 +1,95 @@
-<main>
-  <%= @snapspot.name %>
-  <%= @snapspot.description %>
-  <%= @snapspot.address %>
-  <%= @snapspot.tag_list %>
-  <% if !@snapspot.images.empty? %>
-  <%= image_tag(@snapspot.images.first.url, class: "") %>
-  <% end %>
+<!-- Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <!-- Carousel bullets -->
+  <ol class="carousel-indicators">
+    <% if @snapspot.images.count > 1 %>
+      <% for x in 0..@snapspot.images.count %>
+      <% break if x == (@snapspot.images.count) %>
+        <% if x == 0 %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<%= x %>" class="active"></li>
+        <% else %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<%= x %>"></li>
+        <% end %>
+      <% x += 1 %>
+      <% end %>
+    <% end %>
+  </ol>
 
-  <span id="latitude"><%= @snapspot.latitude %></span>
-  <span id="longitude"><%= @snapspot.longitude %></span>
-  <div style='width: 800px;'>
-    <div id="show-map" style='width: 800px; height: 400px;'></div>
+  <!-- Carousel -->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <% if @snapspot.images.first %>
+      <%= image_tag @snapspot.images.first, class: "snapspot-image d-block img-fluid"  %>
+      <% else %>
+      <%= image_tag 'https://s3-ap-southeast-1.amazonaws.com/sammiepls-airbnb-clone/placeholder.png', class: "snapspot-image d-block img-fluid"  %>
+      <% end %>
+    </div>
+    <% if @snapspot.images.count > 1 %>
+      <% @snapspot.images.shift %>
+      <% @snapspot.images.each do |photo| %>
+        <div class="carousel-item">
+          <%= image_tag photo.url, class: "d-block img-fluid"  %>
+        </div>
+      <% end %>
+  </div>
+
+  <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <% end %>
+</div>
+
+<main>
+  <div class="container-fluid offwhite-bg">
+    <div class='row'>
+      <div class='col-6'>
+        <div class='snapspot-user-details p-4'>
+          <h1 class='marker'><%= @snapspot.name %></h1>
+          <p>Submitted by <%= link_to @snapspot.user.username, user_path(@snapspot.user.username) %></p>
+          <% if @snapspot.user == current_user %>
+            <%= link_to snapspot_path(@snapspot), method: :delete do %>
+              <i class='fa fa-fw fa-trash'></i> Delete SnapSpot
+            <% end %>
+
+            <%= link_to edit_snapspot_path(@snapspot) do %>
+              <i class='fa fa-fw fa-pencil'></i> Edit SnapSpot
+            <% end %>
+          <% end %>
+
+        </div>
+        <div class='snapspot-details'>
+          <h5>Description</h5>
+          <p><%= @snapspot.description %></p>
+          <h5>Address</h5>
+          <p><%= @snapspot.address %></p>
+          <h5>Latitude</h5>
+          <p><span id="latitude"><%= @snapspot.latitude %></span></p>
+          <h5>Longitude</h5>
+          <p><span id="longitude"><%= @snapspot.longitude %></span></p>
+          <h5>Tags</h5>
+          <%= raw @snapspot.tag_list.map { |tag| link_to "##{tag}", tag_path(tag) }.join(" ")  %>
+
+
+        </div>
+      </div>
+
+      <div class="col-6 pr-0">
+        <div style='width: 100%; height:100%;'>
+          <div id="show-map" style='width: 100%; height: 100%;'></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </main>
 
-<%= link_to snapspot_path(@snapspot), method: :delete do %>
-  <i class='fa fa-fw fa-trash'></i> Delete snapspot
-<% end %>
 
-<%= link_to edit_snapspot_path(@snapspot) do %>
-  <i class='fa fa-fw fa-pencil'></i> Edit snapspot
-<% end %>
 
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_JS_KEY'] %>&callback=showMap">

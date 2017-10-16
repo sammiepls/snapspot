@@ -82,3 +82,6 @@ gem 'will_paginate'
 gem "carrierwave"
 gem "mini_magick"
 gem 'fog-aws'
+
+# FontAwesome
+gem 'font-awesome-sass'

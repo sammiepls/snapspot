@@ -2,28 +2,63 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   color: $dark;
+  outline: none;
 }
 h1,.h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
+.purple {
+  color: $purple;
+}
+.white {
+  color: #fff;
+}
+.marker {
+  font-family: 'Permanent Marker',sans-serif;
+}
+.offwhite-bg {
+  background: $offwhite;
+}
 a {
   color: #2E292A;
+  cursor: pointer;
   &:hover, &:focus {
     text-decoration: none;
     color: $purple;
   }
 }
-.btn {
-  padding: 0.5rem 1.75rem;
-  border-radius: 0;
-}
 .btn-primary {
+  @extend %btn;
   background: $purple;
-  font-weight: 600;
-  border: 0;
   color: #fff;
-  &:hover, &:focus {
+  &:hover, &:focus, &:active, {
     background: darken($purple, 10%);
   }
+  &:disabled {
+    background: desaturate($purple, 20%);
+  }
+}
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  vertical-align: middle;
+}
+form {
+  margin: 1.5rem 0;
+}
+input,textarea {
+  padding: .5rem;
+  border: 0;
+  margin: .5rem 0;
+}
+#flash_error {
+  @extend %flash;
+  background: $error;
+}
+#flash_success{
+  @extend %flash;
+  background: $success;
 }

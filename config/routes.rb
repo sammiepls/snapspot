@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root "welcome#index"
+  root "snapspots#index"
+  get "/welcome", to: "welcome#index", as: "welcome"
   resources :users
   resources :snapspots
   get "/users/:id/snapspots" => "snapspots#user_snapspots", as: "user_snapspots"

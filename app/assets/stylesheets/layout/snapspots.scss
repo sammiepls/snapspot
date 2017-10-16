@@ -1,3 +1,112 @@
-// Place all the styles related to the Snapspots controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.snapspot-create-hero {
+  background: linear-gradient(to right, rgba(240,194,123,0.5), rgba(75,18,72,0.5)),url("create-hero.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 20vh;
+}
+.form-bg {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  label {
+    margin-bottom:0;
+  }
+  input[type=text] {
+    width: 100%;
+    background: rgba(255, 255, 255,.7);
+    box-shadow: $l-shadow;
+  }
+  textarea {
+    width: 100%;
+    min-height: 150px;
+    background: rgba(255, 255, 255,.7);
+    box-shadow: $l-shadow;
+  }
+}
+.form-bg::after {
+  z-index: -1;
+   filter: blur(15px);
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(232, 255, 255, 0.5), rgba(250, 208, 246, 0.5)), url(form-bg.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+.snapspot-form-wrapper {
+  padding: .5rem 2rem;
+}
+.search-wrapper {
+  background: url("index.jpg");
+  background-size: cover;
+  background-position: bottom;
+  min-height: 40vh;
+  color: #fff;
+  text-align: center;
+  #snapspot_search {
+    background: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    box-shadow: $shadow;
+    display: flex;
+    input {
+      background: none;
+      flex: 1;
+      padding-right: .5rem;
+      padding-left: .5rem;
+      outline: none;
+      color: #fff;
+      font-weight: 600;
+    }
+    ::-webkit-input-placeholder {
+      color: #fff;
+    }
+  }
+  .popular-tags {
+    h5 {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    a {
+      color: #fff;
+      margin-right: .75rem;
+      &:hover, &:focus {
+        color: lighten($purple, 25%);
+      }
+    }
+  }
+}
+.card {
+  background: $offwhite;
+  border-radius: 0;
+  border: 0;
+  box-shadow: $l-shadow;
+}
+.card-text {
+  font-size: 1.2rem;
+}
+.card-img-top {
+  padding: .75rem .75rem 0;
+}
+.card-body {
+  font-family: 'Permanent Marker',cursive;
+}
+.card-footer {
+  border-top: 0;
+  background: transparent;
+}
+.snapspot-image {
+  height: 60vh;
+  object-fit: cover;
+  width: 100%;
+}
+.snapspot-details {
+  padding: 0 1.5rem 1.5rem;
+  h5 {
+    color: $purple;
+  }
+}

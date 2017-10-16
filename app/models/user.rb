@@ -55,4 +55,5 @@ class User < ApplicationRecord
     user = User.find_by(username:params[:user][:username])
     user.authenticate(params[:user][:password])
   end
+
 end

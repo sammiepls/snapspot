@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # associations
   has_many :authentications, dependent: :destroy
   has_many :snapspots, dependent: :destroy
-  # has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # has_many :comments, dependent: :destroy
 
   # validations
@@ -28,6 +28,24 @@ class User < ApplicationRecord
   def full_name
     self.first_name + " " + self.last_name
   end
+
+  # Likes
+  # creates a new like entry with snapspot_id and user_id
+  def like!(snapspot)
+    self.likes.create!(snapspot_id: snapspot.id)
+  end
+
+  # destroys a heart with matching post_id and user_id
+  def unlike!(snapspot)
+    like = self.likes.find_by_snapspot_id(snapspot.id)
+    like.destroy!
+  end
+
+  # returns true of false if a post is hearted by user
+  def liked?(snapspot)
+    self.likes.find_by_snapspot_id(snapspot.id)
+  end
+
 
   # FB
   def self.create_with_auth_and_hash(authentication, auth_hash)

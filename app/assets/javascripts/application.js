@@ -164,19 +164,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       }
     });
   }
-
-
-
-  // 
-  // document.addEventListener('turbolinks:load', function() {
-  //   $("#btn-like").on('click', function() {
-  //     $.ajax({
-  //       url: '/like',
-  //       method: 'POST',
-  //       success: function(data) {
-  //         console.log("Hi");
-  //       }
-  //
-  //     });
-  //   });
-  // });

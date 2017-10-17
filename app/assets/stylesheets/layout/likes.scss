@@ -5,11 +5,14 @@
 }
 #btn-like {
   i {
-    color: $purple;
+    color: desaturate($purple, 30%);
   }
 }
 #btn-unlike {
   i {
-    color: desaturate($purple, 30%);
+    color: $purple;
   }
+}
+#snapspot-like form {
+    margin-bottom: 0;
 }

@@ -62,15 +62,9 @@
             <% end %>
           <% end %>
 
-          <% if current_user.liked?(@snapspot) %>
-            <%= button_to unlike_path(snapspot_id: @snapspot.id), id:"btn-unlike",method: :delete do %>
-              <h4 class='purple d-block'><i class='fa fa-heart'></i> <%= @snapspot.likes.count %></h4>
-            <% end %>
-          <% else %>
-            <%= button_to like_path(snapspot_id: @snapspot.id),id:"btn-like", method: :post do %>
-              <h4 class='purple d-block'><i class='fa fa-heart'></i> <%= @snapspot.likes.count %></h4>
-            <% end %>
-          <% end %>
+          <div id="snapspot-like">
+            <%= render 'snapspots/snapspot_like', locals: {snapspot: @snapspot}%>
+          </div>
 
         </div>
         <div class='snapspot-details'>

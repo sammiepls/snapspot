@@ -1,0 +1,9 @@
+<% if current_user.liked?(@snapspot) %>
+  <%= button_to unlike_path(snapspot_id: @snapspot.id), id:"btn-unlike", remote:true,method: :delete do %>
+    <h4 class='purple d-block'><i class='fa fa-heart'></i> <span class="snapspot-like-count"><%= @snapspot.likes.count %></span></h4>
+  <% end %>
+<% else %>
+  <%= button_to like_path(snapspot_id: @snapspot.id),id:"btn-like", remote:true,method: :post do %>
+    <h4 class='purple d-block'><i class='fa fa-heart'></i> <span class="snapspot-like-count"><%= @snapspot.likes.count %></span></h4>
+  <% end %>
+<% end %>

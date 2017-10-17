@@ -1,12 +1,10 @@
 .hero {
-  background: url(hero.jpg);
+  background: url("https://s3-ap-southeast-1.amazonaws.com/sammiepls-snapspot/uploads/hero.jpg");
   background-position: center;
   background-size: cover;
-  height: 100vh;
   display: flex;
     align-items: center;
 }
 .hero-text {
-  margin-top: 15rem;
   color: #fff;
 }

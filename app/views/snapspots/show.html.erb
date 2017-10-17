@@ -54,13 +54,17 @@
           <p>Submitted by <%= link_to @snapspot.user.username, user_path(@snapspot.user.username) %></p>
           <% if @snapspot.user == current_user %>
             <%= link_to snapspot_path(@snapspot), method: :delete do %>
-              <i class='fa fa-fw fa-trash'></i> Delete SnapSpot
+              <p><i class='fa fa-fw fa-trash'></i> Delete SnapSpot
             <% end %>
 
             <%= link_to edit_snapspot_path(@snapspot) do %>
-              <i class='fa fa-fw fa-pencil'></i> Edit SnapSpot
+              <i class='fa fa-fw fa-pencil'></i> Edit SnapSpot</p>
             <% end %>
           <% end %>
+
+          <div id="snapspot-like">
+            <%= render 'snapspots/snapspot_like', locals: {snapspot: @snapspot}%>
+          </div>
 
         </div>
         <div class='snapspot-details'>

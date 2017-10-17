@@ -1,5 +1,5 @@
 .snapspot-create-hero {
-  background: linear-gradient(to right, rgba(240,194,123,0.5), rgba(75,18,72,0.5)),url("create-hero.jpg");
+  background: linear-gradient(to right, rgba(240,194,123,0.5), rgba(75,18,72,0.5)),url("https://s3-ap-southeast-1.amazonaws.com/sammiepls-snapspot/uploads/create-hero.jpg");
   background-position: center;
   background-size: cover;
   min-height: 20vh;
@@ -45,7 +45,7 @@
   padding: .5rem 2rem;
 }
 .search-wrapper {
-  background: url("index.jpg");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/sammiepls-snapspot/uploads/index.jpg");
   background-size: cover;
   background-position: bottom;
   min-height: 40vh;

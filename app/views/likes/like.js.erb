@@ -1,0 +1,2 @@
+$('.snapspot-like-count').text("<%= @snapspot.likes.count %>");
+$('#snapspot-like').html('<%= escape_javascript(render ("snapspots/snapspot_like")) %>');

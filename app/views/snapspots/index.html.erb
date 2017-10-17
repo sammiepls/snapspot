@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-6 ml-auto mr-auto">
 
-        <%= image_tag("snapspot_icon.png", class: "snapspot-icon")%>
+        <%= image_tag("https://s3-ap-southeast-1.amazonaws.com/sammiepls-snapspot/uploads/snapspot_icon.png", class: "snapspot-icon")%>
         <%= form_tag snapspots_path, :method => 'get',remote: true, :id => "snapspot_search" do %>
           <%= text_field_tag :search, params[:search], placeholder:"Search for a SnapSpot! Eg. urban, beach, nature..." %>
           <%= button_tag(name:nil,type: "submit", class: "btn-icon mr-2") do %>

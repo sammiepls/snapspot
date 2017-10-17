@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "/welcome", to: "welcome#index", as: "welcome"
   resources :users
   resources :snapspots
-  # get "/users/:id/snapspots" => "snapspots#user_snapspots", as: "user_snapspots"
   # tags
   get 'tags/:tag', to: 'snapspots#index', as: :tag
   # signup
@@ -16,5 +15,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   # Fb authentication
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  # likes
+  match 'like', to: 'likes#like', via: :post
+  match 'unlike', to: 'likes#unlike', via: :delete
 
 end

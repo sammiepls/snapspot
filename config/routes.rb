@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   # Fb authentication
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  # likes
-  match 'like', to: 'likes#like', via: :post
-  match 'unlike', to: 'likes#unlike', via: :delete
-
+  post '/like', to: 'likes#like', as: "like"
+  delete '/unlike', to: 'likes#unlike', as:"unlike"
 end

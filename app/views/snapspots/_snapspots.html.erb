@@ -17,6 +17,9 @@
         <% end %>
         <div class="card-body">
           <h4 class="card-title"><%= snapspot.name %></h4>
+
+
+
           <p class="card-text"> <%= raw snapspot.tag_list.map { |tag| link_to "##{tag}", tag_path(tag) }.join(" ")  %></p>
         </div>
         <div class="card-footer">

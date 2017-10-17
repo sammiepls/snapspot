@@ -54,11 +54,21 @@
           <p>Submitted by <%= link_to @snapspot.user.username, user_path(@snapspot.user.username) %></p>
           <% if @snapspot.user == current_user %>
             <%= link_to snapspot_path(@snapspot), method: :delete do %>
-              <i class='fa fa-fw fa-trash'></i> Delete SnapSpot
+              <p><i class='fa fa-fw fa-trash'></i> Delete SnapSpot
             <% end %>
 
             <%= link_to edit_snapspot_path(@snapspot) do %>
-              <i class='fa fa-fw fa-pencil'></i> Edit SnapSpot
+              <i class='fa fa-fw fa-pencil'></i> Edit SnapSpot</p>
+            <% end %>
+          <% end %>
+
+          <% if current_user.liked?(@snapspot) %>
+            <%= button_to unlike_path(snapspot_id: @snapspot.id), id:"btn-unlike",method: :delete do %>
+              <h4 class='purple d-block'><i class='fa fa-heart'></i> <%= @snapspot.likes.count %></h4>
+            <% end %>
+          <% else %>
+            <%= button_to like_path(snapspot_id: @snapspot.id),id:"btn-like", method: :post do %>
+              <h4 class='purple d-block'><i class='fa fa-heart'></i> <%= @snapspot.likes.count %></h4>
             <% end %>
           <% end %>
 

@@ -30,22 +30,21 @@ class User < ApplicationRecord
   end
 
   # Likes
-  # creates a new like entry with snapspot_id and user_id
-  def like!(snapspot)
-    self.likes.create!(snapspot_id: snapspot.id)
-  end
+  # # creates a new like entry with snapspot_id and user_id
+  # def like!(snapspot)
+  #   self.likes.create!(snapspot_id: snapspot.id)
+  # end
+  #
+  # # destroys a heart with matching post_id and user_id
+  # def unlike!(snapspot)
+  #   like = self.likes.find_by(snapspot_id: snapspot.id)
+  #   like.destroy!
+  # end
 
-  # destroys a heart with matching post_id and user_id
-  def unlike!(snapspot)
-    like = self.likes.find_by_snapspot_id(snapspot.id)
-    like.destroy!
-  end
-
-  # returns true of false if a post is hearted by user
+  # returns true of false if a snapspot is liked by user
   def liked?(snapspot)
-    self.likes.find_by_snapspot_id(snapspot.id)
+     self.likes.find_by(snapspot_id: snapspot.id) ? true : false
   end
-
 
   # FB
   def self.create_with_auth_and_hash(authentication, auth_hash)

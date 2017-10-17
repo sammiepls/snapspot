@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20171017021414) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "snapspots_id"
+    t.bigint "snapspot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["snapspots_id"], name: "index_likes_on_snapspots_id"
+    t.index ["snapspot_id"], name: "index_likes_on_snapspot_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20171017021414) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "likes", "snapspots", column: "snapspots_id"
+  add_foreign_key "likes", "snapspots"
   add_foreign_key "likes", "users"
   add_foreign_key "snapspots", "users"
 end

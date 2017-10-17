@@ -1,0 +1,15 @@
+#btn-like,#btn-unlike {
+  background: 0;
+  border: 0;
+  cursor: pointer;
+}
+#btn-like {
+  i {
+    color: $purple;
+  }
+}
+#btn-unlike {
+  i {
+    color: desaturate($purple, 30%);
+  }
+}

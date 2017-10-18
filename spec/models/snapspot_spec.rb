@@ -27,6 +27,36 @@ RSpec.describe Snapspot, type: :model do
       expect(snapspot.longitude).to be_a(Float)
     end
 
+    it "should have three tags" do
+      snapspot.save
+      expect(snapspot.tag_list.count).to eq(3)
+    end
+
+  end
+
+  context "associations" do
+
+    it { should belong_to(:user) }
+    it { should have_many(:likes).dependent(:destroy) }
+
+  end
+
+  context "search" do
+    let (:user) {build :user}
+    let (:snapspot) {build:snapspot}
+
+    # happy path
+    it "should return a result" do
+      user.save
+      snapspot.save
+      expect(Snapspot.search("lake").first).to eq(snapspot)
+    end
+
+    # unhappy path
+    it "should not return a result" do
+      user.save
+      expect(Snapspot.search("lake").first).to be_nil 
+    end
   end
 
 end

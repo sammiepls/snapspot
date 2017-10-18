@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.capitalize
     if @user.save
       session[:user_id] = @user.id
       flash.now[:success] = "Account successfully created!"

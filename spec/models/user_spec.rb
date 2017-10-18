@@ -26,9 +26,28 @@ RSpec.describe User, type: :model do
 
   context "associations" do
 
-    # it { should have_many(:snapspots) }
-    # it { should belong_to(:likes) }
-    # it { should belong_to(:comments) }
+    it { should have_many(:snapspots).dependent(:destroy) }
+    it { should have_many(:likes).dependent(:destroy) }
 
   end
+
+  context "name methods" do
+    let (:user) {build :user, first_name:"john", last_name:"doe"}
+    it "should capitalize the users first name and last name" do
+      user.capitalize
+      user.save
+      expect(user.first_name).to eq("John")
+      expect(user.last_name).to eq("Doe")
+    end
+
+    it "should return a user's full name" do
+      user.capitalize
+      user.save
+      expect(user.full_name).to eq("John Doe")
+    end
+  end
+
+
+
+
 end

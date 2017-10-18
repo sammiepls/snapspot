@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   context "validations" do
 
     it "should have username and email and password_digest" do
-      should have_db_column(:username)
+      should have_db_column(:username).of_type(:string)
       should have_db_column(:email).of_type(:string)
       should have_db_column(:password_digest).of_type(:string)
     end
@@ -33,6 +33,7 @@ RSpec.describe User, type: :model do
 
   context "name methods" do
     let (:user) {build :user, first_name:"john", last_name:"doe"}
+
     it "should capitalize the users first name and last name" do
       user.capitalize
       user.save
@@ -47,7 +48,16 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "liking a snapspot" do
+    let (:user) {build:user}
+    let (:snapspot) {build:snapspot}
+    let (:like) {build:like}
 
-
-
+    it "should return true if user has liked snapspot" do
+      user.save
+      snapspot.save
+      like.save
+      expect(user.liked?(snapspot)).to eq(true)
+    end
+  end
 end

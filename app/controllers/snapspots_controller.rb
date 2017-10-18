@@ -11,7 +11,7 @@ class SnapspotsController < ApplicationController
     else
       @snapspots = Snapspot.all
     end
-    @snapspots = @snapspots.paginate(:page => params[:page], :per_page => 6)
+    @snapspots = @snapspots.paginate(:page => params[:page], :per_page => 9)
   end
 
   def new

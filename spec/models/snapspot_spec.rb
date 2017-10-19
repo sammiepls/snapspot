@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Snapspot, type: :model do
 
-  context "validations" do
+  describe "validations" do
 
     it "should have name, description, address, latitude, longitude, and user_id columns" do
       should have_db_column(:name).of_type(:string)
@@ -34,28 +34,32 @@ RSpec.describe Snapspot, type: :model do
 
   end
 
-  context "associations" do
+  describe "associations" do
 
     it { should belong_to(:user) }
     it { should have_many(:likes).dependent(:destroy) }
 
   end
 
-  context "search" do
+  describe "search" do
     let (:user) {build :user}
     let (:snapspot) {build:snapspot}
 
     # happy path
-    it "should return a result" do
-      user.save
-      snapspot.save
-      expect(Snapspot.search("lake").first).to eq(snapspot)
+    context "when there is a relevant search result" do
+      it "should return a result" do
+        user.save
+        snapspot.save
+        expect(Snapspot.search("lake").first).to eq(snapspot)
+      end
     end
 
     # unhappy path
-    it "should not return a result" do
-      user.save
-      expect(Snapspot.search("lake").first).to be_nil 
+    context "when there is no relevant serach result" do
+      it "should return nil" do
+        user.save
+        expect(Snapspot.search("lake").first).to be_nil
+      end
     end
   end
 

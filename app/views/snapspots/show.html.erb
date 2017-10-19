@@ -17,7 +17,7 @@
 
   <!-- Carousel -->
   <% if @snapspot.images.first %>
-  <div class="carousel-inner" role="listbox" style="z-index:-1; background:url('<%= @snapspot.images.first %>');">
+  <div class="carousel-inner" role="listbox" style="z-index:-1; background:url('<%= @snapspot.images.first %>');   background-size: cover;">
   <% else %>
   <div class="carousel-inner" role="listbox" >
   <% end %>

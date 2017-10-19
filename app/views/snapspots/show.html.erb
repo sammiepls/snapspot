@@ -52,7 +52,7 @@
         <div class='snapspot-user-details p-4'>
           <h1 class='marker'><%= @snapspot.name %></h1>
           <p>Submitted by <%= link_to @snapspot.user.username, user_path(@snapspot.user.username) %></p>
-          <% if @snapspot.user == current_user %>
+          <% if @snapspot.user == current_user || current_user.superadmin? %>
             <%= link_to snapspot_path(@snapspot), method: :delete do %>
               <p><i class='fa fa-fw fa-trash'></i> Delete SnapSpot
             <% end %>

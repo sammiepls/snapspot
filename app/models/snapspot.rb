@@ -7,7 +7,6 @@ class Snapspot < ApplicationRecord
   # validation
   validates :name,:description, presence: true
   validate :address_lat_lng, :must_have_three_tags
-  validates :latitude, :longitude, numericality: true
 
   # tags
   acts_as_taggable

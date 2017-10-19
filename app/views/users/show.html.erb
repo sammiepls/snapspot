@@ -21,7 +21,7 @@
           <% end %>
         <% end %>
 
-        <% if @user == current_user %>
+        <% if @user == current_user || current_user.superadmin? %>
           <%= link_to edit_user_path(@user) do %>
             <i class='fa fa-fw fa-pencil'></i> Edit User</p>
           <% end %>

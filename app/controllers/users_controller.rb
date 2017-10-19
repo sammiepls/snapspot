@@ -21,16 +21,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @snapspots = @user.snapspots.paginate(:page => params[:page], :per_page => 12)
+    @snapspots = @user.snapspots.paginate(:page => params[:page], :per_page => 9)
   end
 
   def edit
   end
 
   def update
+    @snapspots = @user.snapspots.paginate(:page => params[:page], :per_page => 9)
     if @user.update_attributes(user_params)
-      flash.now[:success] = "Your details have been updated successfully."
-      redirect_to user_path(@user)
+      flash[:success] = "Your details have been updated successfully."
+      render template: "users/show"
     else
       @errors = @user.errors.full_messages
       render template: "users/edit"

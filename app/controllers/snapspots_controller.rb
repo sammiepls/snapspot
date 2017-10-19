@@ -9,7 +9,7 @@ class SnapspotsController < ApplicationController
     elsif params[:search]
       @snapspots = Snapspot.search(params[:search])
     else
-      @snapspots = Snapspot.all
+      @snapspots = Snapspot.all.order('updated_at DESC')
     end
     @snapspots = @snapspots.paginate(:page => params[:page], :per_page => 9)
   end

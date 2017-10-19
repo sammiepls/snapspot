@@ -36,4 +36,19 @@ describe "creating a snapspot", :type => :feature do
     end
   end
 
+  context "with invalid params" do
+    it "flashes an error message and renders edit snapspot page" do
+      within ("#new_snapspot") do
+        fill_in('snapspot_name', with: "Beachfront")
+        fill_in('snapspot_description', with: "A beautiful beach with white sand and blue seas.")
+        fill_in('snapspot_tag_list', with: "beach")
+        click_on('Create Snapspot')
+      end
+
+      expect(page).to have_selector "#flash_error", text: "There was an error creating your SnapSpot."
+      expect(page).to have_css("form#new_snapspot")
+      expect(page).to have_css("div.error-wrapper")
+    end
+  end
+
 end

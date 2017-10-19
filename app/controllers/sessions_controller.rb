@@ -28,12 +28,15 @@ class SessionsController < ApplicationController
     if authentication.user
       user = authentication.user
       authentication.update_token(auth_hash)
+      session[:user_id] = user.id
       @next = root_url
+      sign_in
       flash[:success] = "Signed in!"
       # else: user logs in with OAuth for the first time
     else
       user = User.create_with_auth_and_hash(authentication, auth_hash)
       # you are expected to have a path that leads to a page for editing user details
+      session[:user_id] = user.id
       @next = edit_user_path(user)
       flash[:success] = "User created. Please confirm or edit details"
     end

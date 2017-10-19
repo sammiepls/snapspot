@@ -31,6 +31,7 @@ describe "creating a snapspot", :type => :feature do
       expect(page).to have_content("A beautiful beach with white sand and blue seas.")
       expect(page).to have_content("42.4376016")
       expect(page).to have_content("-83.8562834")
+      expect(page).to have_content("#beach #sand #sea")
       expect(page).to have_css("div#show-map")
     end
   end

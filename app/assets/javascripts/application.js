@@ -74,7 +74,7 @@ function initMap() {
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent(`<div class='text-center'>Latitude: ${pos.lat} <br> Longitude: ${pos.lng}</div>`);
+      infoWindow.setContent("<div class='text-center'>Latitude:" + pos.lat + " <br> Longitude: "  + pos.lng "</div>");
       marker = new google.maps.Marker({
         position: pos,
         map: map
@@ -118,7 +118,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   // Get lat and lng and center map based on placing map marker
   function placeMarkerAndPanTo(latLng, map) {
     if ( marker ) {
-      infoWindow.setContent(`<div class='text-center'>Latitude: ${latLng.lat()} <br> Longitude: ${latLng.lng()}</div>`);
+      infoWindow.setContent("<div class='text-center'>Latitude:" + ${latLng.lat()} + "<br> Longitude: " + ${latLng.lng()} + "</div>");
       marker.setPosition(latLng);
       infoWindow.open(map, marker);
       $("#snapspot_latitude").val(latLng.lat())

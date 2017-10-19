@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @snapspots = @user.snapspots.paginate(:page => params[:page], :per_page => 12)
+    @snapspots = @user.snapspots.paginate(:page => params[:page], :per_page => 9)
   end
 
   def edit

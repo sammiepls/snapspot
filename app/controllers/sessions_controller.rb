@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
       authentication.update_token(auth_hash)
       session[:user_id] = user.id
       @next = root_url
-      sign_in
       flash[:success] = "Signed in!"
       # else: user logs in with OAuth for the first time
     else

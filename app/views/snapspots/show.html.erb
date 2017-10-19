@@ -16,7 +16,11 @@
   </ol>
 
   <!-- Carousel -->
-  <div class="carousel-inner" role="listbox">
+  <% if @snapspot.images.first %>
+  <div class="carousel-inner" role="listbox" style="z-index:-1; background:url('<%= @snapspot.images.first %>');">
+  <% else %>
+  <div class="carousel-inner" role="listbox" >
+  <% end %>
     <div class="carousel-item active">
       <% if @snapspot.images.first %>
       <%= image_tag @snapspot.images.first, class: "snapspot-image d-block img-fluid"  %>

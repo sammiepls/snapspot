@@ -29,18 +29,6 @@ class User < ApplicationRecord
     self.first_name + " " + self.last_name
   end
 
-  # Likes
-  # # creates a new like entry with snapspot_id and user_id
-  # def like!(snapspot)
-  #   self.likes.create!(snapspot_id: snapspot.id)
-  # end
-  #
-  # # destroys a heart with matching post_id and user_id
-  # def unlike!(snapspot)
-  #   like = self.likes.find_by(snapspot_id: snapspot.id)
-  #   like.destroy!
-  # end
-
   # returns true of false if a snapspot is liked by user
   def liked?(snapspot)
      self.likes.find_by(snapspot_id: snapspot.id) ? true : false
@@ -50,7 +38,6 @@ class User < ApplicationRecord
   def self.create_with_auth_and_hash(authentication, auth_hash)
 
     user = self.create!(
-    # If you dont know how to call it, use byebug and auto_hash to see how to call it
     username: auth_hash["extra"]["raw_info"]["short_name"],
     first_name: auth_hash["extra"]["raw_info"]["first_name"],
     last_name: auth_hash["extra"]["raw_info"]["last_name"],
